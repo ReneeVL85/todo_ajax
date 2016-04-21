@@ -18,10 +18,6 @@ class TodosController < ApplicationController
     @todo = Todo.new
   end
 
-  # GET /todos/1/edit
-  def edit
-  end
-
   # POST /todos
   # POST /todos.json
   def create
@@ -32,7 +28,7 @@ class TodosController < ApplicationController
         format.html { redirect_to root_path, notice: 'Todo was successfully created.' }
         format.json { render :show, status: :created, location: @todo }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +42,7 @@ class TodosController < ApplicationController
         format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
         format.json { render :show, status: :ok, location: @todo }
       else
-        format.html { render :edit }
+        format.html { render :index }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
